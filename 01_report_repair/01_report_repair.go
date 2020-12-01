@@ -18,3 +18,17 @@ func ReportRepairPartOne(entries []int) int {
 
 	return 0
 }
+
+func ReportRepairPartTwo(entries []int) int {
+	for i, ii := range entries {
+		for j, jj := range entries[i+1:] {
+			for _, kk := range entries[j+1:] {
+				if ii+jj+kk == target {
+					return ii * jj * kk
+				}
+			}
+		}
+	}
+
+	return 0
+}
