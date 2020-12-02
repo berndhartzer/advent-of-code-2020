@@ -2,12 +2,13 @@ package password_philosophy
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"testing"
 )
 
 func TestPasswordPhilosophyPartOne(t *testing.T) {
-	t.Run("example input", func (t *testing.T) {
+	t.Run("example input", func(t *testing.T) {
 		example := []string{
 			"1-3 a: abcde",
 			"1-3 b: cdefg",
@@ -18,6 +19,13 @@ func TestPasswordPhilosophyPartOne(t *testing.T) {
 		if got != expected {
 			t.Fail()
 		}
+	})
+
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./02_input.txt")
+
+		output := PasswordPhilosophyPartOne(input)
+		t.Log(fmt.Sprintf("%d\n", output))
 	})
 }
 
