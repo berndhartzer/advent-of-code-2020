@@ -29,6 +29,28 @@ func TestPasswordPhilosophyPartOne(t *testing.T) {
 	})
 }
 
+func TestPasswordPhilosophyPartTwo(t *testing.T) {
+	t.Run("example input", func(t *testing.T) {
+		example := []string{
+			"1-3 a: abcde",
+			"1-3 b: cdefg",
+			"2-9 c: ccccccccc",
+		}
+		expected := 1
+		got := PasswordPhilosophyPartTwo(example)
+		if got != expected {
+			t.Fail()
+		}
+	})
+
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./02_input.txt")
+
+		output := PasswordPhilosophyPartTwo(input)
+		t.Log(fmt.Sprintf("%d\n", output))
+	})
+}
+
 func readFileAsStringSlice(t *testing.T, name string) []string {
 	t.Helper()
 
