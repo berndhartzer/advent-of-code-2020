@@ -22,3 +22,19 @@ func TobogganTrajectoryPartOne(mapLines []string, right, down int) int {
 
 	return trees
 }
+
+func TobogganTrajectoryPartTwo(mapLines []string, movements [][]int) int {
+	trees := []int{}
+
+	for _, movement := range movements {
+		trees = append(trees, TobogganTrajectoryPartOne(mapLines, movement[0], movement[1]))
+	}
+
+	total := trees[0]
+
+	for i := 1; i <= len(trees)-1; i++ {
+		total *= trees[i]
+	}
+
+	return total
+}
