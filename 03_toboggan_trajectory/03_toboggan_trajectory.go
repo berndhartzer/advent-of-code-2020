@@ -31,7 +31,6 @@ func TobogganTrajectoryPartTwo(mapLines []string, movements [][]int) int {
 	}
 
 	total := trees[0]
-
 	for i := 1; i <= len(trees)-1; i++ {
 		total *= trees[i]
 	}
