@@ -163,8 +163,6 @@ func PassportProcessingPartTwo(passports []string) int {
 			for field := range fields {
 				fields[field] = false
 			}
-
-			continue
 		}
 	}
 
