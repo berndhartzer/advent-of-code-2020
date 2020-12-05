@@ -31,6 +31,15 @@ func TestBinaryBoardingPartOne(t *testing.T) {
 	})
 }
 
+func TestBinaryBoardingPartTwo(t *testing.T) {
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./05_input.txt")
+
+		output := BinaryBoardingPartTwo(input)
+		t.Log(fmt.Sprintf("%d\n", output))
+	})
+}
+
 func readFileAsStringSlice(t *testing.T, name string) []string {
 	t.Helper()
 
