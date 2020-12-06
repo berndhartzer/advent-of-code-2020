@@ -42,6 +42,41 @@ func TestCustomCustomsPartOne(t *testing.T) {
 	})
 }
 
+func TestCustomCustomsPartTwo(t *testing.T) {
+	t.Run("example input", func(t *testing.T) {
+		example := []string{
+			"abc",
+			"",
+			"a",
+			"b",
+			"c",
+			"",
+			"ab",
+			"ac",
+			"",
+			"a",
+			"a",
+			"a",
+			"a",
+			"",
+			"b",
+		}
+
+		expected := 6
+		got := CustomCustomsPartTwo(example)
+		if got != expected {
+			t.Fail()
+		}
+	})
+
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./06_input.txt")
+
+		output := CustomCustomsPartTwo(input)
+		t.Log(fmt.Sprintf("%d\n", output))
+	})
+}
+
 func readFileAsStringSlice(t *testing.T, name string) []string {
 	t.Helper()
 
