@@ -37,6 +37,36 @@ func TestSeatingSystemPartOne(t *testing.T) {
 	})
 }
 
+func TestSeatingSystemPartTwo(t *testing.T) {
+	t.Run("example input", func(t *testing.T) {
+		example := []string{
+			"L.LL.LL.LL",
+			"LLLLLLL.LL",
+			"L.L.L..L..",
+			"LLLL.LL.LL",
+			"L.LL.LL.LL",
+			"L.LLLLL.LL",
+			"..L.L.....",
+			"LLLLLLLLLL",
+			"L.LLLLLL.L",
+			"L.LLLLL.LL",
+		}
+
+		expected := 26
+		got := SeatingSystemPartTwo(example)
+		if got != expected {
+			t.Fail()
+		}
+	})
+
+	// t.Run("actual input", func(t *testing.T) {
+	// 	input := readFileAsStringSlice(t, "./11_input.txt")
+
+	// 	output := SeatingSystemPartTwo(input)
+	// 	t.Log(fmt.Sprintf("%d\n", output))
+	// })
+}
+
 func readFileAsStringSlice(t *testing.T, name string) []string {
 	t.Helper()
 

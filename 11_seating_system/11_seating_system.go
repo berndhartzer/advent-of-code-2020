@@ -99,3 +99,8 @@ func SeatingSystemPartOne(seats []string) int {
 
 	return count
 }
+
+func SeatingSystemPartTwo(seats []string) int {
+	count := 0
+	return count
+}
