@@ -59,12 +59,12 @@ func TestSeatingSystemPartTwo(t *testing.T) {
 		}
 	})
 
-	// t.Run("actual input", func(t *testing.T) {
-	// 	input := readFileAsStringSlice(t, "./11_input.txt")
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./11_input.txt")
 
-	// 	output := SeatingSystemPartTwo(input)
-	// 	t.Log(fmt.Sprintf("%d\n", output))
-	// })
+		output := SeatingSystemPartTwo(input)
+		t.Log(fmt.Sprintf("%d\n", output))
+	})
 }
 
 func readFileAsStringSlice(t *testing.T, name string) []string {

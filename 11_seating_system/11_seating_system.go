@@ -1,9 +1,5 @@
 package seating_system
 
-import (
-	"fmt"
-)
-
 const empty byte = 76
 const occupied byte = 35
 const floor byte = 46
@@ -145,7 +141,7 @@ func (g Grid) NumVisibleInRow(x, y, direction int) int {
 	stopSearching := false
 
 	for {
-		if check > 0 && check <= len(g.state[y])-1 {
+		if check >= 0 && check <= len(g.state[y])-1 {
 			switch g.state[y][check] {
 			case empty:
 				stopSearching = true
@@ -177,7 +173,7 @@ func (g Grid) NumVisibleInDiagonal(x, y, dirX, dirY int) int {
 	for {
 		_, ok := g.state[checkY]
 		if ok {
-			if checkX > 0 && checkX <= len(g.state[checkY])-1 {
+			if checkX >= 0 && checkX <= len(g.state[checkY])-1 {
 				switch g.state[checkY][checkX] {
 				case empty:
 					stopSearching = true
@@ -188,15 +184,6 @@ func (g Grid) NumVisibleInDiagonal(x, y, dirX, dirY int) int {
 			} else {
 				stopSearching = true
 			}
-
-
-			// switch row[x] {
-			// case empty:
-			// 	stopSearching = true
-			// case occupied:
-			// 	stopSearching = true
-			// 	count++
-			// }
 		} else {
 			stopSearching = true
 		}
@@ -215,33 +202,19 @@ func (g Grid) NumVisibleInDiagonal(x, y, dirX, dirY int) int {
 func (g Grid) NumVisibleOccupied(x, y int) int {
 	count := 0
 
-	// up
 	count += g.NumVisibleInColumn(x, y, -1)
-
 	count += g.NumVisibleInDiagonal(x, y, 1, -1)
-
-	// right
 	count += g.NumVisibleInRow(x, y, 1)
-
 	count += g.NumVisibleInDiagonal(x, y, 1, 1)
-
-	// down
 	count += g.NumVisibleInColumn(x, y, 1)
-
 	count += g.NumVisibleInDiagonal(x, y, -1, 1)
-
-	// left
 	count += g.NumVisibleInRow(x, y, -1)
-
 	count += g.NumVisibleInDiagonal(x, y, -1, -1)
-
-	// fmt.Println("count", count)
 
 	return count
 }
 
 func SeatingSystemPartTwo(seats []string) int {
-	// state := make(map[int][]byte)
 	grid := Grid{
 		state: make(map[int][]byte),
 	}
@@ -251,8 +224,6 @@ func SeatingSystemPartTwo(seats []string) int {
 			grid.state[y] = append(grid.state[y], seats[y][x])
 		}
 	}
-
-	// fmt.Println(grid)
 
 	for {
 		changed := false
@@ -268,8 +239,6 @@ func SeatingSystemPartTwo(seats []string) int {
 				}
 
 				adjacentOccupied := grid.NumVisibleOccupied(x, y)
-
-
 
 				switch pos {
 				case empty:
@@ -308,7 +277,6 @@ func SeatingSystemPartTwo(seats []string) int {
 			}
 		}
 	}
-	fmt.Println(count)
 
 	return count
 }
