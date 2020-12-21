@@ -36,6 +36,35 @@ func TestOperationOrderPartOne(t *testing.T) {
 	})
 }
 
+func TestOperationOrderPartTwo(t *testing.T) {
+	tests := map[string]struct {
+		input    []string
+		expected int
+	}{
+		"example 1": {input: []string{"1 + 2 * 3 + 4 * 5 + 6"}, expected: 231},
+		"example 2": {input: []string{"1 + (2 * 3) + (4 * (5 + 6))"}, expected: 51},
+		"example 3": {input: []string{"2 * 3 + (4 * 5)"}, expected: 46},
+		"example 4": {input: []string{"5 + (8 * 3 + 9 + 3 * 4 * 3)"}, expected: 1445},
+		"example 5": {input: []string{"5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"}, expected: 669060},
+		"example 6": {input: []string{"((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"}, expected: 23340},
+	}
+
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			if OperationOrderPartTwo(tc.input) != tc.expected {
+				t.Fail()
+			}
+		})
+	}
+
+	t.Run("actual input", func(t *testing.T) {
+		input := readFileAsStringSlice(t, "./input.txt")
+
+		output := OperationOrderPartTwo(input)
+		t.Log(fmt.Sprintf("%d\n", output))
+	})
+}
+
 func readFileAsStringSlice(t *testing.T, name string) []string {
 	t.Helper()
 
